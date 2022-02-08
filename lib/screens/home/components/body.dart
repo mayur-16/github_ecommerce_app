@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/Product.dart';
-import 'package:shop_app/screens/details/details_screen.dart';
 
 import 'categorries.dart';
 import 'item_card.dart';
@@ -18,7 +17,7 @@ class Body extends StatelessWidget {
             "Women",
             style: Theme.of(context)
                 .textTheme
-                .headline5
+                .headline5!
                 .copyWith(fontWeight: FontWeight.bold),
           ),
         ),
@@ -35,18 +34,19 @@ class Body extends StatelessWidget {
                   childAspectRatio: 0.75,
                 ),
                 itemBuilder: (context, index) => ItemCard(
-                      product: products[index],
-                      press: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailsScreen(
-                              product: products[index],
-                            ),
-                          )),
-                    )),
+                    product: products[index],
+                    //products[index],
+                    /*press: () {
+                      SchedulerBinding.instance!.addPostFrameCallback((_) {
+
+                      });
+                    }*/
+                )),
           ),
         ),
       ],
     );
   }
 }
+
+

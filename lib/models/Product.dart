@@ -5,13 +5,13 @@ class Product {
   final int price, size, id;
   final Color color;
   Product({
-    this.id,
-    this.image,
-    this.title,
-    this.price,
-    this.description,
-    this.size,
-    this.color,
+    required this.id,
+    required this.image,
+    required this.title,
+    required this.price,
+    required this.description,
+    required this.size,
+    required this.color,
   });
 }
 
@@ -39,7 +39,7 @@ List<Product> products = [
       size: 10,
       description: dummyText,
       image: "assets/images/bag_3.png",
-      color: Color(0xFF989493)),
+      color: Color(0xFF5D6D7E)),
   Product(
       id: 4,
       title: "Old Fashion",
@@ -63,7 +63,7 @@ List<Product> products = [
     size: 12,
     description: dummyText,
     image: "assets/images/bag_6.png",
-    color: Color(0xFFAEAEAE),
+    color: Color(0xFF808B96),
   ),
 ];
 

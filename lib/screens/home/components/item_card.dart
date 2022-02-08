@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/models/Product.dart';
 
 import '../../../constants.dart';
+import '../../details/details_screen.dart';
 
 class ItemCard extends StatelessWidget {
   final Product product;
-  final Function press;
   const ItemCard({
-    Key key,
-    this.product,
-    this.press,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: press,
+      onTap: (){
+        Navigator.of(context)
+            .push(_createRoute(product: product));
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -52,4 +54,23 @@ class ItemCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute({required Product product}) {
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          DetailsScreen(product: product),
+      transitionDuration: Duration(milliseconds: 400),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+animation=CurvedAnimation(parent: animation, curve: Curves.easeIn);
+
+return FadeTransition(opacity: animation,child: child);
+       /* return SlideTransition(
+          position: Tween(
+            begin: Offset(1.0, 0.0),
+            end: Offset(0.0,0.0),
+          ).animate(animation),
+          child: child,
+        );*/
+      });
 }
